@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class LoginService {
@@ -19,5 +17,15 @@ export class LoginService {
       "email" :email,
       "password":password
     });
+  }
+
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    if(token === null){
+      return false;
+    }
+    // Check whether the token is expired and return
+    // true or false
+    return true;
   }
 }

@@ -1,3 +1,4 @@
+import { LoginService } from './login/login.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +25,7 @@ import { UserService } from './home/user/user.service';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -2,6 +2,9 @@ import { LoginInterface } from './loginInterface';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import {
+  Router
+} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +19,8 @@ export class LoginComponent implements OnInit {
   data :any;
   token :any;
   constructor(
-    private LoginService: LoginService
+    private LoginService: LoginService,
+    public router: Router
   ) { 
     this.data = {
       "version":"0.0.0"
@@ -32,6 +36,7 @@ export class LoginComponent implements OnInit {
     this.LoginService.getToken(this.loginForm.value.email,this.loginForm.value.password).subscribe(res=>{
       this.token = res;
       localStorage.setItem("token", this.token.token);
+      this.router.navigate(['home']);
     });
   }
 

@@ -1,3 +1,4 @@
+import { LoginService } from './login/login.service';
 import { UserService } from './home/user/user.service';
 import { Injectable } from '@angular/core';
 import {
@@ -5,17 +6,20 @@ import {
   CanActivate,
   RouterStateSnapshot,
   UrlTree,
+  Router
 } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginGuard implements CanActivate {
   data:any;
+  me:any;
   auth: boolean;
   constructor(
-    private UserService: UserService
+    private LoginService: LoginService,
+    public router: Router,
+    public UserService: UserService
   ) { 
     this.data = {
       "code":"400"
@@ -26,14 +30,10 @@ export class LoginGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-   
-    this.UserService.getInfoUserConnect().subscribe(res=>{
-      this.data = res;
-      console.log(this.data);
-      if(this.data.code === 200){
-        this.auth = true;
+      if(this.LoginService.isAuthenticated()){
+        return true;
       }
-    });
-    return this.auth;
+      return false;
+
   }
 }
