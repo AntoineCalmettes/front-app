@@ -1,0 +1,35 @@
+<div class="container text-center pt-5">
+  <div class="col-12">
+    <div>
+      <img src="../../assets/logo.png" class="img-fluid logo" alt="" />
+    </div>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <input
+        class="form-control"
+        placeholder="email"
+        type="text"
+        formControlName="email"
+      />
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <input
+        type="password"
+        class="mt-3 form-control"
+        placeholder="password"
+        formControlName="password"
+      />
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" type="submit" class="btn btn-primary mt-3" [disabled]="!loginForm.valid">Sign in</button>
+        </div>
+    </div>
+ 
+    <p class="mt-5">version : {{ data.version }}</p>
+</div>
