@@ -1,3 +1,4 @@
+import { UserComponent } from './home/user/user.component';
 import { LoginGuard } from './login.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +11,11 @@ const routes: Routes = [
      component: HomeComponent,
      canActivate: [LoginGuard],
     },
+    { 
+      path: 'user',
+       component: UserComponent,
+       canActivate: [LoginGuard],
+      },
   { path: '**', component: LoginComponent }
 ];
 

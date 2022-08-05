@@ -1,1 +1,33 @@
-<p>user works!</p>
+<div class="d-flex flex-row">
+  <app-nav></app-nav>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">email</th>
+            <th scope="col">first name</th>
+            <th scope="col">last name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users.body; index as i">
+            <td>
+              {{ user.id }}
+            </td>
+            <td>
+              {{ user.email }}
+            </td>
+            <td>
+                {{ user.firstName }}
+              </td>
+              <td>
+                {{ user.lastName }}
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

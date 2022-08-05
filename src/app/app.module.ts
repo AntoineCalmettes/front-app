@@ -10,20 +10,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './home/user/user.component';
 import { UserService } from './home/user/user.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavComponent } from './home/nav/nav.component';
 @NgModule({
   
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [UserService,LoginService],
   bootstrap: [AppComponent]
